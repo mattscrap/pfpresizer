@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script defer data-domain="pfpresizer.com" src="https://plausible.io/js/script.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CRNZ74P1Q"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-9CRNZ74P1Q');
+    </script>
+    <meta http-equiv="Content-Language" content="en-us" />
+    <meta name="description" content="A simple image resizer that focuses on your profile picture. Our simple tool allows you to upload an image and instantly get all the proper sizes for social media." />
+    <meta name="keywords" content="image resizer, profile picture resizer, profile resizer, resize my profile picture, pfp cropper" />
+    <meta property="og:title" content="PFP Resizer" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="PFP Resizer allows you to download the perfect profile picture for X, Facebook, Instagram, TikTok, and more social media platforms instantly." />
+    <meta property="og:url" content="https://pfpresizer.com" />
+    <meta property="og:site_name" content="https://pfpresizer.com" />
+    <meta property="og:image" content="https://pfpresizer.com/pfpresizer.png">
+    <meta name="google-adsense-account" content="ca-pub-5194103306926232">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Q8MyFxEkHbeLbJ1OnqF_aY4GArj24EVmjcP_m8XAtgg" />
+    <!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://pfpresizer.com/" />
+<meta property="og:title" content="PFP Resizer - Resize any picture into the perfect profile picture size." />
+<meta property="og:description" content="A simple tool to resize your profile picture. Upload an image and instantly get the right sizes for all social media platforms." />
+<meta property="og:image" content="https://pfpresizer.com/pfpresizer.png">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="https://pfpresizer.com/" />
+<meta property="twitter:title" content="PFP Resizer - Resize any picture into the perfect profile picture size." />
+<meta property="twitter:description" content="A simple tool to resize your profile picture. Upload an image and instantly get the right sizes for all social media platforms." />
+<meta property="twitter:image" content="https://pfpresizer.com/pfpresizer.png" />
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+    <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css" />
+    <style>
+        #preview-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border: 1px solid #ccc;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        #croppie-container {
+            width: 100%;
+            height: 100%;
+        }
+        .move-indicator {
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border: 2px dashed #007bff;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+    </style>
+    <title>PFP Resizer - Resize any picture into the perfect profile picture size.</title>
+</head>
+<body class="bg-gray-100">
+
+    <div class="container mx-auto p-8">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-blue-600 mb-4">Profile Picture Resizer</h1>
+            <p class="text-lg text-gray-700">Resize any picture into the proper size for any social media pfp. Including X, Facebook, Instagram, and Tiktok.</p>
+        </div>
+        <div class="flex flex-wrap lg:flex-nowrap lg:space-x-8">
+            <div class="w-full lg:w-1/2 mb-8 lg:mb-0">
+                <div class="text-center mb-4">
+                    <input type="file" id="upload-button" accept="image/*" class="hidden">
+                    <label for="upload-button" class="cursor-pointer bg-blue-500 text-white py-2 px-4 rounded">Choose File</label>
+                </div>
+                <div id="preview-container">
+                    <div id="croppie-container"></div>
+                    <div class="move-indicator"></div>
+                </div>
+            </div>
+            <div class="w-full lg:w-1/2 lg:max-w-md">
+                <div class="mb-4">
+                    <label for="dimension-select" class="block text-gray-700 mb-2">Resize My PFP to:</label>
+                    <select id="dimension-select" class="form-select block w-full border border-gray-300 rounded py-2 px-3 mb-4">
+                        <option value="180x180">Facebook Profile Picture Size (180x180)</option>
+                        <option value="640x640">WhatsApp Profile Picture Size (640x640)</option>
+                        <option value="320x320">Instagram Profile Picture Size (320x320)</option>
+                        <option value="400x400">LinkedIn Profile Picture Size (400x400)</option>
+                        <option value="400x400">X Profile Picture Size (400x400)</option>
+                        <option value="200x200">TikTok Profile Picture Size (200x200)</option>
+                        <option value="1080x1080">Pinterest Profile Picture Size (1080x1080)</option>
+                        <option value="256x256">GitHub Profile Picture Size (256x256)</option>
+                        <option value="800x800">YouTube Profile Picture Size (800x800)</option>
+                        <option value="150x150">Reddit Profile Picture Size (150x150)</option>
+                        <option value="300x300">Tumblr Profile Picture Size (300x300)</option>
+                        <option value="640x640">WeChat Profile Picture Size (640x640)</option>
+                        <option value="800x800">Twitch Profile Picture Size (800x800)</option>
+                        <option value="400x400">Quora Profile Picture Size (400x400)</option>
+                        <option value="400x400">Twitter Profile Picture Size (400x400)</option>
+                    </select>
+                    <button id="download-button" class="bg-green-500 text-white py-2 px-4 rounded w-full">Download</button>
+                    <br><br><button id="download-all-button" class="bg-blue-500 text-white py-2 px-4 rounded w-full">Download All</button>
+                    
+                </div>
+                <div class="mb-4">
+                    <label for="zoom-range" class="block text-gray-700 mb-2">Zoom:</label>
+                    <input type="range" id="zoom-range" min="0" max="2" step="0.01" value="1" class="w-full">
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <section class="text-center bg-light py-5">
+        <div class="container mx-auto w-3/5">
+            <h1 class="text-4xl font-bold mb-4">The Perfect Profile Picture Sizes</h1>
+            <h2 class="text-2xl mb-4">Perfectly sized images for all social media</h2>
+            <p class="text-lg leading-relaxed">
+                Social media has become an integral part of our lives, and with the growing popularity of these platforms, it's important to have a 
+                <a href='/' class="text-blue-500 underline">well-crafted profile picture</a> that stands out from the crowd. However, each platform has its own specifications and requirements for profile picture dimensions. Here's a breakdown of the dimensions for profile pictures on some of the most popular social media platforms:
+            </p>
+        </div>
+    </section>
+    
+    <div class="container mx-auto w-4/5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-8">
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2">Facebook</h3>
+        <p class="text-lg"><a href="/resize-image-to-180x180">Facebook</a> recommends a profile picture size of 180x180 pixels. However, the image will appear as 170x170 pixels on desktop, and 128x128 pixels on smartphones. It's important to choose a high-resolution image that is at least 720 pixels wide to ensure that it looks good on all devices.</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2">Instagram</h3>
+        <p class="text-lg">Instagram profile pictures are circular, and the recommended dimensions are 110x110 pixels. However, the picture will appear as 40x40 pixels in the feed, so it's important to choose an image that looks good at a small size. Instagram also allows users to upload larger images, up to 1080x1080 pixels, which will be downscaled to fit the circular profile picture.</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2">LinkedIn</h3>
+        <p class="text-lg">The recommended size for a LinkedIn profile picture is 400x400 pixels. However, the image will appear as 200x200 pixels on desktop and 150x150 pixels on smartphones. LinkedIn also recommends that users choose a high-quality, professional image that accurately represents their brand.</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2">YouTube</h3>
+        <p class="text-lg">YouTube profile pictures are also circular, and the recommended size is 800x800 pixels. However, the picture will appear as 98x98 pixels next to the channel name, so it's important to choose an image that looks good at a small size. YouTube also recommends that users upload a larger image, up to 2560x1440 pixels, which will be used as the channel art.</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2">X</h3>
+        <p class="text-lg">The recommended size for an X profile picture is 400x400 pixels. However, the picture will appear as 200x200 pixels on desktop and 48x48 pixels on smartphones. X also allows users to upload larger images, up to 700x700 pixels, which will be automatically scaled down.</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2">Twitch</h3>
+        <p class="text-lg">Twitch profile pictures are square, and the recommended size is 800x800 pixels. However, the picture will appear as 160x160 pixels on desktop and 128x128 pixels on smartphones. Twitch also recommends that users choose an image that accurately represents their brand and personality.</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2">WhatsApp</h3>
+        <p class="text-lg">The recommended size for a WhatsApp profile picture is 640x640 pixels. However, the picture will appear as 140x140 pixels on smartphones, so it's important to choose an image that looks good at a small size. WhatsApp also allows users to crop the image and add filters.</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2">WeChat</h3>
+        <p class="text-lg">The recommended size for a WeChat profile picture is 640x640 pixels. However, the picture will appear as 96x96 pixels on smartphones. WeChat also allows users to add stickers and effects to their profile picture.</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2">Quora</h3>
+        <p class="text-lg">The recommended size for a Quora profile picture is 400x400 pixels. However, the picture will appear as 60x60 pixels next to the username. Quora also allows users to upload a larger image, up to 2000x2000 pixels, which will be used as the header image.</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2">TikTok</h3>
+        <p class="text-lg">TikTok profile pictures are square, and the recommended size is 200x200 pixels. However, it's essential to choose an image that is visually appealing and recognizable at a small size, as TikTok profile pictures are displayed in a circular format.</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2">Pinterest</h3>
+        <p class="text-lg">The recommended size for a Pinterest profile picture is 1080x1080 pixels. This high-resolution image ensures that your profile picture looks crisp and clear on the platform. It's important to use an image that represents your personal or brand identity effectively.</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2">GitHub</h3>
+        <p class="text-lg">GitHub profile pictures are square, and the recommended size is 256x256 pixels. A clear and recognizable image is important for your GitHub profile, as it represents you in the developer community. Ensure that your picture aligns with the professional context of the platform.</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2">Medium</h3>
+        <p class="text-lg">Medium profile pictures are square, and the recommended size is 400x400 pixels. However, the picture will appear as 60x60 pixels next to the username. Medium encourages users to use a clear and engaging image that reflects their writing style or personal brand.</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2">Flickr</h3>
+        <p class="text-lg">Flickr profile pictures are square, and the recommended size is 800x800 pixels. However, the picture will appear as 48x48 pixels on smartphones. It's essential to choose an image that represents your photography style and captures the essence of your work.</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2">Behance</h3>
+        <p class="text-lg">Behance profile pictures are square, and the recommended size is 300x300 pixels. However, the picture will appear as 60x60 pixels next to the username. Behance emphasizes the importance of a high-quality and visually appealing image that showcases your creative skills and expertise.</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2">Steam</h3>
+        <p class="text-lg">Steam profile pictures are rectangular, and the recommended size is 184x184 pixels. Steam allows users to customize their profile pictures, and it's essential to choose an image that represents your gaming identity or persona.</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2">Meetup</h3>
+        <p class="text-lg">Meetup profile pictures are circular, and the recommended size is 200x200 pixels. A clear and friendly image is important for creating a positive and inviting impression on the Meetup platform. Make sure your picture aligns with the nature of your events or interests.</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2">SoundCloud</h3>
+        <p class="text-lg">SoundCloud profile pictures are square, and the recommended size is 2000x2000 pixels. However, the picture will appear as 400x400 pixels on the platform. A high-resolution image that reflects your music style or brand is crucial for attracting listeners on SoundCloud.</p>
+    </div>
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2">Snapchat</h3>
+        <p class="text-lg">Snapchat profile pictures, known as Bitmojis, are customizable avatars representing the user. The recommended size is 320x320 pixels, but the image will appear as 80x80 pixels on the platform.</p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2">Reddit</h3>
+        <p class="text-lg">Reddit profile pictures are referred to as avatars. The recommended size is 256x256 pixels, and the image will display as 128x128 pixels. Users can also add custom designs to their avatars.</p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2">Tumblr</h3>
+        <p class="text-lg">Tumblr allows users to customize their profile images and backgrounds. The recommended size for a profile picture is 128x128 pixels, but it will appear as 64x64 pixels on the platform.</p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2">Discord</h3>
+        <p class="text-lg">Discord profile pictures are displayed as avatars, often representing the user's gaming or community interests. The recommended size is 128x128 pixels, with the image displaying as 32x32 pixels.</p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2">Dribbble</h3>
+        <p class="text-lg">Dribbble is a platform for designers to showcase their work. The recommended size for a profile picture is 400x400 pixels, and it will appear as 100x100 pixels. A high-quality, professional image is important.</p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2">Vimeo</h3>
+        <p class="text-lg">Vimeo is a video-sharing platform, so the profile image should reflect the user's video content style. The recommended size is 600x600 pixels, and it will display as 100x100 pixels on the platform.</p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2">Tinder</h3>
+        <p class="text-lg">Tinder profile pictures are crucial for first impressions. The recommended size is 640x640 pixels, and the display size varies by device. High-quality and engaging images are recommended.</p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2">Clubhouse</h3>
+        <p class="text-lg">Clubhouse is an audio-based social network, and profile pictures help users recognize speakers in rooms. The recommended size is 500x500 pixels, with the image displaying as 100x100 pixels.</p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2">VSCO</h3>
+        <p class="text-lg">VSCO is a photography-focused platform. The recommended size for a profile picture is 800x800 pixels, and it will display as 150x150 pixels. High-resolution and aesthetically pleasing images are important.</p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2">Telegram</h3>
+        <p class="text-lg">Telegram is a messaging app, and profile pictures should be clear and easily recognizable. The recommended size is 512x512 pixels, and it will display as 128x128 pixels on the platform.</p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2">KakaoTalk</h3>
+        <p class="text-lg">KakaoTalk is a popular messaging app in South Korea. The recommended size for a profile picture is 640x640 pixels, with the image displaying as 100x100 pixels. Users often include personalized elements like stickers.</p>
+      </div>
+      
+</div>
+<footer class="bg-gray-200 py-4 mt-8 text-center">
+    <p class="text-gray-600">All uploaded data is deleted instantly. We save no images as the entire process is done inside the browser.</p>
+    <p>&copy; <a href="https://pfpresizer.com" class="text-blue-500">PfP Resizer</a> | <a class='text-blue-500' href='/terms'>Terms</a> and <a class='text-blue-500' href='/privacy'>Privacy</a><br>Powered by <a href="https://nichetools.net" class="text-blue-500">Niche Tools</a></p>
+</footer>
+<script src="https://unpkg.com/croppie/croppie.min.js"></script>
+<script src="script.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/croppie/croppie.css" />
+    
+</body>
+</html>
